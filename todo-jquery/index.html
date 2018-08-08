@@ -106,16 +106,25 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script>
   	function updateCounters() {
-        var todoCount = $(".todo").length;
-        var completedCount = $(".completed").length;
+      var todoCount = $(".todo").length;
+      var completedCount = $(".completed").length;
 
-        $("#total-count").html(todoCount);
-        $("#completed-count").html(completedCount);
-        $("#todo-count").html(todoCount - completedCount);
-      }
-
-      updateCounters();
+      $("#total-count").html(todoCount);
+      $("#completed-count").html(completedCount);
+      $("#todo-count").html(todoCount - completedCount);
     }
+
+    function toggleDone() {
+      var checkbox = this;
+
+      $(checkbox).parent().toggleClass("completed");
+    }
+
+    $(document).ready(function () {
+      $("input[type=checkbox]").on('change', toggleDone);
+      updateCounters();
+    });
+
   </script>
 </body>
 
